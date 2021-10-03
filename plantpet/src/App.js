@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-
+import plant from '/plant.png'
 function App() {
   return (
     <div className="App">
@@ -9,6 +9,9 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        <img>
+        src = {plant}
+        </img> 
         <a
           className="App-link"
           href="https://reactjs.org"

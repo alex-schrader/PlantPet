@@ -1,44 +1,17 @@
 <!doctype html>
-<title>Example</title>
-<style>
-* {
-  box-sizing: border-box; 
-}
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-  margin: 0;
-}
-#main {
-  display: flex;
-  flex: 1;
-}
-#main > article {
-  flex: 1;
-}
-#main > nav, 
-#main > aside {
-  flex: 0 0 20vw;
-  background: beige;
-}
-#main > nav {
-  order: -1;
-}
-header, footer {
-  background: yellowgreen;
-  height: 20vh;
-}
-header, footer, article, nav, aside {
-  padding: 1em;
-}
-</style>
+<title>Plant Pet</title>
+<link rel="stylesheet" href="PlantPet.css">
 <body>
-  <header>Header</header>
+  <header>Plant Pet!</header>
+  <!-- <div id="main"> -->
   <div id="main">
-    <article>Article</article>
-    <nav>Nav</nav>
-    <aside>Aside</aside>
+    <article>
+      <img src="plant.png" alt="plant icon" class="center">
+    </article>
+    <div>
+      <button type="button">Water</button>
+    </div>
+  
   </div>
-  <footer>Footer</footer>
-</body>
+  <footer></footer>
+</body> 
