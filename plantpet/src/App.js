@@ -1,7 +1,5 @@
 import logo from './logo.svg';
 import './App.css';
-import Exampletext from './Exampletext.js'
-import plant from './plant.png'
 
 function App() {
   return (
