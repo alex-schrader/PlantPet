@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import Exampletext from './Exampletext.js'
 
 function App() {
   return (
@@ -15,8 +16,10 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn plantpet
         </a>
+        <Exampletext/>
+        <Exampletext/>
       </header>
     </div>
   );
