@@ -1,14 +1,13 @@
 import ProgressBar from "react-bootstrap/ProgressBar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
+import "./Levels.css";
 
 const Levels = (props) => {
-
-
   return (
     <div className="level">
-      Level: <h1>{props.level}</h1>
-      <ProgressBar animated variant="success" now={props.level} />
+      <b>Level:</b> {Math.floor(props.level)}
+      <ProgressBar animated variant="success" max={1} now={props.level-Math.floor(props.level)} />
     </div>
   );
 };
