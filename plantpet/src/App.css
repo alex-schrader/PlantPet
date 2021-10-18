@@ -2,9 +2,43 @@
   text-align: center;
 }
 
+.progBar{
+  width:8%;
+  position: absolute;
+  bottom: 5%;
+  left: 0;
+  transform: translateY(-50%);
+}
+.waterlogo{
+  width: 30px;
+  height:40px;
+}
+
+.waterButton {
+  width:60px;
+  height:60px;
+  text-align: left;
+  position: absolute;
+  bottom: 5%;
+  left: 0;
+  transform: translateY(-50%);
+  border-radius: 10px;
+  transition: width .5s;
+  transition: height .5s
+}
+.waterButton:hover {
+  width:80px;
+  height:80px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.imgprop {
+  height: 300px;
+  width:auto;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -12,7 +46,6 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
