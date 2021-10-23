@@ -10,8 +10,8 @@
   transform: translateY(-50%);
 }
 .waterlogo{
-  width: 30px;
-  height:40px;
+  width: 40px;
+  height:auto;
 }
 
 .waterButton {
@@ -22,13 +22,12 @@
   bottom: 5%;
   left: 0;
   transform: translateY(-50%);
-  border-radius: 10px;
-  transition: width .5s;
-  transition: height .5s
+  border-radius: 20px;
+  margin-bottom: 5px;
+  transition: margin-bottom .5s;
 }
 .waterButton:hover {
-  width:80px;
-  height:80px;
+  margin-bottom:10px;
 }
 
 .App-logo {

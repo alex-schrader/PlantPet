@@ -5,7 +5,7 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Levels from "./Components/Levels";
 import "./App.css";
-import waterplant from './waterplant.png'
+import waterplant from './waterplant.jpg'
 
 function App() {
   const [water, setWater] = useState(0);
