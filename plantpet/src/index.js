@@ -8,6 +8,20 @@ import { Auth0Provider } from "@auth0/auth0-react";
 const domain = process.env.REACT_APP_AUTH0_DOMAIN;
 const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
 
+//create express node
+const express = require("express");
+const PORT = process.env.PORT || 3000;
+const path = require("path");
+const app = express();
+
+app.get("/api", (req, res) => {
+  res.json({ message: "Server"} );
+});
+
+app.listen(PORT, () => {
+  console.log(`Server listening on ${PORT}}`);
+});
+
 ReactDOM.render(
   <Auth0Provider
     domain={domain}
@@ -17,6 +31,8 @@ ReactDOM.render(
   </Auth0Provider>,
   document.getElementById("root")
 );
+
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

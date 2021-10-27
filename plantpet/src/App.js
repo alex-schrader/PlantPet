@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import plant from "./plant.png";
-import { useState } from "react";
+import React, { useState } from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Levels from "./Components/Levels";
@@ -11,6 +11,16 @@ import LogoutButton from "./Components/Loginout/LogoutButton";
 import Profile from "./Components/Profile";
 
 function App() {
+
+  //backend setup stuff
+  const [data, setData] = React.useState(null);
+
+  React.useEffect(() => {
+    fetch("/api")
+      .then((res) => res.json())
+      .then((data) => setData(data.message));
+  }, []);
+
   const [water, setWater] = useState(0);
   const clickHandlerWater = () => {
     if (water === 20) {
@@ -45,6 +55,8 @@ function App() {
       {/* <h1>{water}</h1> */}
     </div>
   );
+    
+
 }
 
 export default App;
