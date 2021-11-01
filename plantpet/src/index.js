@@ -8,19 +8,43 @@ import { Auth0Provider } from "@auth0/auth0-react";
 const domain = process.env.REACT_APP_AUTH0_DOMAIN;
 const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
 
-//create express node
-const express = require("express");
-const PORT = process.env.PORT || 3000;
-const path = require("path");
+//import dependencies
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const helmet = require('helmet');
+const morgan = require('morgan');
+
+//define express app
 const app = express();
 
-app.get("/api", (req, res) => {
-  res.json({ message: "Server"} );
+//define a temp array to use a placeholder for db
+const array = [
+  {title: 'database'}
+];
+
+//enhance api security
+app.use(helmet());
+
+// parse json bodies into JS objects
+app.use(bodyParser.json());
+
+// enabling CORS for all requests
+app.use(cors());
+
+// logs HTTP requests
+app.use(morgan('combined'));
+
+// define an endpoint
+app.get('/', (req, res) => {
+  res.send(array);
 });
 
-app.listen(PORT, () => {
-  console.log(`Server listening on ${PORT}}`);
+// starting the server
+app.listen(3000, () => {
+  console.log('listening on port 3000');
 });
+
 
 ReactDOM.render(
   <Auth0Provider
