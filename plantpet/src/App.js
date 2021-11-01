@@ -14,13 +14,13 @@ import Profile from "./Components/Profile";
 function App() {
 
   //backend setup stuff
-  const [data, setData] = React.useState(null);
+  //const [data, setData] = React.useState(null);
 
-  React.useEffect(() => {
+  /*React.useEffect(() => {
     fetch("/api")
       .then((res) => res.json())
       .then((data) => setData(data.message));
-  }, []);
+  }, []);*/
 
   const [water, setWater] = useState(0);
   const clickHandlerWater = () => {
