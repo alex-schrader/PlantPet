@@ -23,12 +23,10 @@
   left: 0;
   transform: translateY(-50%);
   border-radius: 10px;
-  transition: width .5s;
-  transition: height .5s
+  background-color:white;
 }
 .waterButton:hover {
-  width:80px;
-  height:80px;
+  background-color:red;
 }
 
 .App-logo {
