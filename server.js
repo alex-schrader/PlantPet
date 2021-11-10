@@ -8,7 +8,8 @@ app.use(express.json())
 
 
 app.post("/users", async (req, res) => {
-    //const results = await db.createUser(req.body);
+    const results = await db.createUser(req.body);
+    console.log("got to post")
     res.status(201).json({ "UserID": results[0] });
 })
 
