@@ -3,27 +3,29 @@
 }
 
 .progBar{
-  width:8%;
+  width:14%;
   position: absolute;
-  bottom: 5%;
+  bottom: 11%;
   left: 0;
   transform: translateY(-50%);
 }
+
 .waterlogo{
-  width: 40px;
+  width: 130px;
   height:auto;
 }
 
 .waterButton {
-  width:60px;
-  height:60px;
+  width:150px;
+  height:150px;
   text-align: left;
   position: absolute;
   bottom: 5%;
   left: 0;
   transform: translateY(-50%);
-  
+  color: #F9FFF2;
   border-radius: 20px;
+  border-color: #094986;
   margin-bottom: 5px;
   transition: margin-bottom .5s;
 }
@@ -37,7 +39,7 @@
 }
 
 .imgprop {
-  height: 300px;
+  height: auto;
   width:auto;
 }
 

@@ -1,11 +1,11 @@
 import logo from "./logo.svg";
-import plant from "./plant.png";
+import plant from "./plant_logo.png";
 import React, { useState } from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Levels from "./Components/Levels";
 import "./App.css";
-import waterplant from "./waterplant.jpg";
+import waterplant from "./water.png";
 import LoginButton from "./Components/Loginout/LoginButton";
 import LogoutButton from "./Components/Loginout/LogoutButton";
 import Profile from "./Components/Profile";
@@ -13,7 +13,7 @@ import Profile from "./Components/Profile";
 
 
 function App() {
-
+ 
   //backend setup stuff
   /*const [data, setData] = React.useState(null);
 
@@ -22,7 +22,7 @@ function App() {
       .then((res) => res.json())
       .then((data) => setData(data.message));
   }, []);*/
-
+  document.body.style = 'background: #E6D1D1;';
   const [water, setWater] = useState(0);
   const clickHandlerWater = () => {
     if (water === 20) {
@@ -56,6 +56,7 @@ function App() {
       </div>
       {/* <h1>{water}</h1> */}
     </div>
+   
   );
     
 
