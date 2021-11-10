@@ -1,11 +1,15 @@
 const express = require("express");
 const app = express();
-const db = require("./db/users.js")
+const db = require("./db/users")
+const bodyParser = require('body-parser')
+
+app.use(express.urlencoded());  
+app.use(express.json())
 
 
 app.post("/users", async (req, res) => {
-    const results = await db.createUser(req.body);
-    res.status(201).json({ id: results[0] });
+    //const results = await db.createUser(req.body);
+    res.status(201).json({ "UserID": results[0] });
 })
 
 app.get("/users", async (req, res) => {

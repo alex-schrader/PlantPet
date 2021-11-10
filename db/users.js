@@ -1,19 +1,19 @@
 const knex = require("./knex");
 
-function addUser(user) {
+function createUser(user) {
   return knex("users").insert(user);
 }
 
 function getAllUsers() {
-  return knex("userID").select("*");
+  return knex("users").select("*");
 }
 
 function updateUser(userID, user) {
-  return knex("users").where("userID", userID).update(user);
+  return knex("users").where("UserID", userID).update(user);
 }
 
-module.export = {
-  addUser,
+module.exports = {
+  createUser,
   getAllUsers,
   updateUser,
 };
