@@ -8,12 +8,17 @@ function getAllUsers() {
   return knex("users").select("*");
 }
 
-function updateUser(userID, user) {
-  return knex("users").where("UserID", userID).update(user);
+function deleteUser(UserID) {
+    return knex("users").where("UserID", UserID).del()
+}
+
+function updateUser(UserID, user) {
+  return knex("users").where("UserID", UserID).update(user);
 }
 
 module.exports = {
   createUser,
   getAllUsers,
   updateUser,
+  deleteUser,
 };
