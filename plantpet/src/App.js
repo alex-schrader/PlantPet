@@ -1,5 +1,5 @@
 import logo from "./logo.svg";
-import plant from "./plant_logo.png";
+import plant from "./plant2.gif";
 import React, { useState, useEffect } from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,13 +12,10 @@ import LogoutButton from "./Components/Loginout/LogoutButton";
 import Profile from "./Components/Profile";
 import { useAuth0 } from "@auth0/auth0-react";
 //import axios from "axios";
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 const axios = require("axios")
-
-// import Popup from 'reactjs-popup';
-// import 'reactjs-popup/dist/index.css';
-
-
 
 function App() {
   const { user, isAuthenticated } = useAuth0();
@@ -46,11 +43,7 @@ function App() {
     }
   };
   const [level, setLevel] = useState(1);
-  // const PopupExample = () => (
-  //   <Popup trigger={<button> Trigger</button>} position="right center">
-  //     <div>Popup content here !!</div>
-  //   </Popup>
-  // );
+ 
 
   //isAuthenticated && setLevel(10);
 
@@ -84,9 +77,11 @@ function App() {
         </button>
       </div>}
       {isAuthenticated && <div className="shop">
-        <button className="shopButton">
+      <Popup trigger={<button className="shopButton">
           <img className="shoplogo" src={shopbutton}></img>
-        </button>
+        </button>} position="top center">
+       <div>Popup content here !!</div>
+       </Popup>
       </div>}
     </div>
    
