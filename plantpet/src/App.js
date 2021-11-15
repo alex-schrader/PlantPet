@@ -79,7 +79,7 @@ function App() {
       {isAuthenticated && <div className="shop">
       <Popup trigger={<button className="shopButton">
           <img className="shoplogo" src={shopbutton}></img>
-        </button>} position="top center">
+        </button>} Cposition="top center">
        <div>Popup content here !!</div>
        </Popup>
       </div>}
