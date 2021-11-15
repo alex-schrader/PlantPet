@@ -11,7 +11,9 @@ import LoginButton from "./Components/Loginout/LoginButton";
 import LogoutButton from "./Components/Loginout/LogoutButton";
 import Profile from "./Components/Profile";
 import { useAuth0 } from "@auth0/auth0-react";
-import axios from "axios";
+//import axios from "axios";
+
+const axios = require("axios")
 
 
 
@@ -46,13 +48,13 @@ function App() {
 
   useEffect(()=> {
     console.log('in use effect!')
-    /*axios.get("http://localhost:2500/users").then(function (response) {
+    axios.get("http://localhost:2500/users").then(function (response) {
       console.log("in axios get request")
-      console.log()
+      console.log(response.data)
       let allData = response.data["users"]
-      console.log(allData)
+      console.log(allData["PlantLevel"])
       setLevel(5)
-    }); */
+    }); 
   }, []);
   
 
@@ -65,7 +67,6 @@ function App() {
         <Profile/>
       </div>
       {isAuthenticated && <img src={plant} className="imgprop" />}
-
       {isAuthenticated &&  <div className="water">
         <div className="progBar">
           <ProgressBar animated variant="success" now={water} max={21} />
@@ -73,12 +74,12 @@ function App() {
         <button onClick={clickHandlerWater} className="waterButton">
           <img className="waterlogo" src={waterplant}></img>
         </button>
-      </div>
-      <div className="shop">
+      </div>}
+      {isAuthenticated && <div className="shop">
         <button className="shopButton">
           <img className="shoplogo" src={shopbutton}></img>
         </button>
-      </div>
+      </div>}
     </div>
    
   );
