@@ -33,6 +33,29 @@
   margin-bottom:10px;
 }
 
+.shoplogo{
+  width: 130px;
+  height:auto;
+}
+
+.shopButton {
+  width:150px;
+  height:150px;
+  text-align: right;
+  position: absolute;
+  bottom: 5%;
+  right: 0;
+  transform: translateY(-50%);
+  color: #F9FFF2;
+  border-radius: 20px;
+  border-color: #094986;
+  margin-bottom: 5px;
+  transition: margin-bottom .5s;
+}
+.shopButton:hover {
+  margin-bottom:10px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

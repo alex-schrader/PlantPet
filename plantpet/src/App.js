@@ -10,10 +10,14 @@ import shopbutton from "./shop.png";
 import LoginButton from "./Components/Loginout/LoginButton";
 import LogoutButton from "./Components/Loginout/LogoutButton";
 import Profile from "./Components/Profile";
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 
 function App() {
+  const { user, isAuthenticated } = useAuth0();
+
+
  
   //backend setup stuff
   /*const [data, setData] = React.useState(null);
@@ -39,15 +43,15 @@ function App() {
 
   return (
     <div className="App">
-      <Levels level={level} arg="hello" />
+      {isAuthenticated && <Levels level={level} arg="hello" />}
       <div>
         <LoginButton />
         <LogoutButton />
         <Profile/>
       </div>
-      <img src={plant} className="imgprop" />
+      {isAuthenticated && <img src={plant} className="imgprop" />}
 
-      <div className="water">
+      {isAuthenticated &&  <div className="water">
         <div className="progBar">
           <ProgressBar animated variant="success" now={water} max={21} />
         </div>

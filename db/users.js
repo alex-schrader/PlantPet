@@ -9,7 +9,7 @@ function getAllUsers() {
 }
 
 function deleteUser(UserID) {
-    return knex("users").where("UserID", UserID).del()
+  return knex("users").where("UserID", UserID).del();
 }
 
 function updateUser(UserID, user) {
