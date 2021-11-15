@@ -24,12 +24,20 @@ function App() {
     console.log("user")
     console.log(user)
     let usersData = JSON.stringify(user, null, 2);
-    console.log("here!");
+    console.log("in getData!");
     console.log(usersData);
-    console.log("here!");
+    axios.get("http://localhost:2500/users").then(function (response) {
+      console.log("in axios get request");
+      console.log("in axios")
+      let allData = response.data["users"];
+      console.log("allData:")
+      console.log(allData);
+      console.log("myUser")
+      console.log(usersData);
+    });
+    
     return usersData
   }
-  let userData = getData()
 
   //backend setup stuff
   /*const [data, setData] = React.useState(null);
@@ -63,28 +71,11 @@ function App() {
   let userNumber = -5
   console.log("in use effect!");
   useEffect(() => {
-    console.log("here");
-    console.log(userData);
-    console.log("here");
+    let userData = getData()
     axios.get("http://localhost:2500/users").then(function (response) {
       console.log("in axios get request");
       console.log(response.data);
       let allData = response.data["users"];
-      for (let i = 0; i < allData.length; i++) {
-        if (allData[i]["UserID"] == 25) {
-          console.log("in iterator");
-          console.log(allData[i]["UserID"]);
-          console.log(allData[i]);
-          currUser = allData[i]
-          userNumber = i
-          //let user = allData[i]
-        }
-      }
-      console.log("currUser")
-      console.log(currUser)
-      console.log(userNumber)
-      //console.log(allData[1]["PlantLevel"])
-      setLevel(currUser["PlantLevel"]);
     });
   }, []);
 
