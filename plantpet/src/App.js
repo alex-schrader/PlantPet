@@ -52,8 +52,9 @@ function App() {
       console.log("in axios get request")
       console.log(response.data)
       let allData = response.data["users"]
-      console.log(allData["PlantLevel"])
+      console.log(allData[1]["PlantLevel"])
       setLevel(5)
+      
     }); 
   }, []);
   
