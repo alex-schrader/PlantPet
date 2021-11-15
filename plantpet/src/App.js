@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import plant from "./plant_logo.png";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Levels from "./Components/Levels";
@@ -10,6 +10,7 @@ import LoginButton from "./Components/Loginout/LoginButton";
 import LogoutButton from "./Components/Loginout/LogoutButton";
 import Profile from "./Components/Profile";
 import { useAuth0 } from "@auth0/auth0-react";
+import axios from "axios";
 
 
 
@@ -40,12 +41,26 @@ function App() {
   };
   const [level, setLevel] = useState(1);
 
+  //isAuthenticated && setLevel(10);
+
+  useEffect(()=> {
+    console.log('in use effect!')
+    /*axios.get("http://localhost:2500/users").then(function (response) {
+      console.log("in axios get request")
+      console.log()
+      let allData = response.data["users"]
+      console.log(allData)
+      setLevel(5)
+    }); */
+  }, []);
+  
+
   return (
     <div className="App">
       {isAuthenticated && <Levels level={level} arg="hello" />}
       <div>
-        <LoginButton />
-        <LogoutButton />
+      {!isAuthenticated && <LoginButton />}
+        {isAuthenticated && <LogoutButton />}
         <Profile/>
       </div>
       {isAuthenticated && <img src={plant} className="imgprop" />}
