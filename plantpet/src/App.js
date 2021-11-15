@@ -15,6 +15,9 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const axios = require("axios")
 
+// import Popup from 'reactjs-popup';
+// import 'reactjs-popup/dist/index.css';
+
 
 
 function App() {
@@ -43,6 +46,11 @@ function App() {
     }
   };
   const [level, setLevel] = useState(1);
+  // const PopupExample = () => (
+  //   <Popup trigger={<button> Trigger</button>} position="right center">
+  //     <div>Popup content here !!</div>
+  //   </Popup>
+  // );
 
   //isAuthenticated && setLevel(10);
 
