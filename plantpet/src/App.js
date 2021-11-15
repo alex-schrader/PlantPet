@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import plant from "./plant_logo.png";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Levels from "./Components/Levels";
@@ -11,6 +11,9 @@ import LoginButton from "./Components/Loginout/LoginButton";
 import LogoutButton from "./Components/Loginout/LogoutButton";
 import Profile from "./Components/Profile";
 import { useAuth0 } from "@auth0/auth0-react";
+//import axios from "axios";
+
+const axios = require("axios")
 
 // import Popup from 'reactjs-popup';
 // import 'reactjs-popup/dist/index.css';
@@ -49,16 +52,29 @@ function App() {
   //   </Popup>
   // );
 
+  //isAuthenticated && setLevel(10);
+
+  useEffect(()=> {
+    console.log('in use effect!')
+    axios.get("http://localhost:2500/users").then(function (response) {
+      console.log("in axios get request")
+      console.log(response.data)
+      let allData = response.data["users"]
+      console.log(allData["PlantLevel"])
+      setLevel(5)
+    }); 
+  }, []);
+  
+
   return (
     <div className="App">
       {isAuthenticated && <Levels level={level} arg="hello" />}
       <div>
-        <LoginButton />
-        <LogoutButton />
+      {!isAuthenticated && <LoginButton />}
+        {isAuthenticated && <LogoutButton />}
         <Profile/>
       </div>
       {isAuthenticated && <img src={plant} className="imgprop" />}
-
       {isAuthenticated &&  <div className="water">
         <div className="progBar">
           <ProgressBar animated variant="success" now={water} max={21} />
@@ -66,12 +82,12 @@ function App() {
         <button onClick={clickHandlerWater} className="waterButton">
           <img className="waterlogo" src={waterplant}></img>
         </button>
-      </div>
-      <div className="shop">
+      </div>}
+      {isAuthenticated && <div className="shop">
         <button className="shopButton">
           <img className="shoplogo" src={shopbutton}></img>
         </button>
-      </div>
+      </div>}
     </div>
    
   );
