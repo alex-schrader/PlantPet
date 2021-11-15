@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Levels from "./Components/Levels";
 import "./App.css";
 import waterplant from "./water.png";
+import shopbutton from "./shop.png";
 import LoginButton from "./Components/Loginout/LoginButton";
 import LogoutButton from "./Components/Loginout/LogoutButton";
 import Profile from "./Components/Profile";
@@ -72,8 +73,12 @@ function App() {
         <button onClick={clickHandlerWater} className="waterButton">
           <img className="waterlogo" src={waterplant}></img>
         </button>
-      </div>}
-      {/* <h1>{water}</h1> */}
+      </div>
+      <div className="shop">
+        <button className="shopButton">
+          <img className="shoplogo" src={shopbutton}></img>
+        </button>
+      </div>
     </div>
    
   );
