@@ -31,6 +31,7 @@ const Profile = (props) => {
         LastWaterDate: "0",
         Friends: "0",
       };
+      props.allUsers.users.push(newUser)
       axios.post('http://localhost:2500/users', newUser)
             .then((res) => {
                 console.log(res.data)
@@ -43,8 +44,7 @@ const Profile = (props) => {
   return (
     isAuthenticated && (
       <div>
-        <h1>hello</h1>
-        {data}
+        {user["sub"]}
       </div>
     )
   );

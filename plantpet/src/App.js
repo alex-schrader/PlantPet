@@ -35,7 +35,11 @@ function App() {
       setWater(0);
       let tempUser = currUser
       tempUser.PlantLevel = tempUser.PlantLevel+.25
-      axios.patch("https://localhost:2500/users", tempUser)
+      console.log("-here")
+      console.log(tempUser.UserID)
+      console.log("-here")
+      let tempStr = "https://localhost:2500/users/" + String(tempUser.UserID)
+      axios.patch(tempStr, tempUser)
         .then(function (response) {
           console.log(response);
         })
