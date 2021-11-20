@@ -15,9 +15,13 @@ import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 
 const axios = require("axios");
-const cors = require('cors');
+const cors = require("cors");
 
 function App() {
+  const { isLoading } = useAuth0();
+  //if (isLoading) {
+    //return <div>loading...</div>
+  //}
   const { user, isAuthenticated } = useAuth0();
 
   //backend setup stuff
@@ -33,13 +37,14 @@ function App() {
   const clickHandlerWater = () => {
     if (water === 20) {
       setWater(0);
-      let tempUser = currUser
-      tempUser.PlantLevel = tempUser.PlantLevel+.25
-      console.log("-here")
-      console.log(tempUser.UserID)
-      console.log("-here")
-      let tempStr = "https://localhost:2500/users/" + String(tempUser.UserID)
-      axios.patch(tempStr, tempUser)
+      let tempUser = currUser;
+      tempUser.PlantLevel = tempUser.PlantLevel + 0.25;
+      console.log("-here");
+      console.log(tempUser.UserID);
+      console.log("-here");
+      let tempStr = "https://localhost:2500/users/" + String(tempUser.UserID);
+      axios
+        .patch(tempStr, tempUser)
         .then(function (response) {
           console.log(response);
         })
@@ -54,7 +59,7 @@ function App() {
     }
   };
   const [level, setLevel] = useState(1);
-  const [currUser, setCurrUser] = useState([])
+  const [currUser, setCurrUser] = useState([]);
 
   //isAuthenticated && setLevel(10);
   const [allUsers, setAllUsers] = useState([]);
@@ -74,14 +79,19 @@ function App() {
 
   return (
     <div className="App">
-      {isAuthenticated && <Levels level={level} arg="hello" />}
+      {isLoading && <div>loading...</div>}
+      {isAuthenticated && !isLoading && <Levels level={level} arg="hello" />}
       <div>
-        {!isAuthenticated && <LoginButton />}
-        {isAuthenticated && <LogoutButton />}
-        <Profile allUsers={allUsers} setCurrUserProf = {setCurrUser}setLevelProf={setLevel} />
+        {!isAuthenticated && !isLoading &&  <LoginButton />}
+        {isAuthenticated && !isLoading &&  <LogoutButton />}
+        <Profile
+          allUsers={allUsers}
+          setCurrUserProf={setCurrUser}
+          setLevelProf={setLevel}
+        />
       </div>
-      {isAuthenticated && <img src={plant} className="imgprop" />}
-      {isAuthenticated && (
+      {isAuthenticated && !isLoading &&  <img src={plant} className="imgprop" />}
+      {isAuthenticated && !isLoading &&  (
         <div className="water">
           <div className="progBar">
             <ProgressBar animated variant="success" now={water} max={21} />
@@ -91,7 +101,7 @@ function App() {
           </button>
         </div>
       )}
-      {isAuthenticated && (
+      {isAuthenticated && !isLoading &&  (
         <div className="shop">
           <Popup
             trigger={
