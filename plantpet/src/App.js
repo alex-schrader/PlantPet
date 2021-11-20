@@ -11,16 +11,15 @@ import LogoutButton from "./Components/Loginout/LogoutButton";
 import Profile from "./Components/Profile";
 import { useAuth0 } from "@auth0/auth0-react";
 //import axios from "axios";
-import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
 
-const axios = require("axios")
+const axios = require("axios");
+const cors = require('cors');
 
 function App() {
   const { user, isAuthenticated } = useAuth0();
 
-
- 
   //backend setup stuff
   /*const [data, setData] = React.useState(null);
 
@@ -29,11 +28,20 @@ function App() {
       .then((res) => res.json())
       .then((data) => setData(data.message));
   }, []);*/
-  document.body.style = 'background: #E6D1D1;';
+  document.body.style = "background: #E6D1D1;";
   const [water, setWater] = useState(0);
   const clickHandlerWater = () => {
     if (water === 20) {
       setWater(0);
+      let tempUser = currUser
+      tempUser.PlantLevel = tempUser.PlantLevel+.25
+      axios.patch("https://localhost:2500/users", tempUser)
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
       setLevel(level + 0.25);
       console.log("hi");
       console.log(level);
@@ -42,54 +50,59 @@ function App() {
     }
   };
   const [level, setLevel] = useState(1);
- 
+  const [currUser, setCurrUser] = useState([])
 
   //isAuthenticated && setLevel(10);
-  const [allUsers, setAllUsers] = useState([])
-  useEffect(()=> {
-    console.log('in use effect!')
+  const [allUsers, setAllUsers] = useState([]);
+  useEffect(() => {
+    console.log("in use effect!");
     axios.get("http://localhost:2500/users").then(function (response) {
-      let currUserData = JSON.stringify(user, null, 2)
-      console.log("in axios get request")
-      console.log(currUserData)
-      setAllUsers(response.data)
-      console.log(response.data)
-      let allData = response.data["users"]
-      console.log(allData["PlantLevel"])
-      setLevel(5)
-    }); 
+      let currUserData = JSON.stringify(user, null, 2);
+      console.log("in axios get request");
+      console.log(currUserData);
+      setAllUsers(response.data);
+      console.log(response.data);
+      let allData = response.data["users"];
+      console.log(allData["PlantLevel"]);
+      setLevel(5);
+    });
   }, []);
-  
 
   return (
     <div className="App">
       {isAuthenticated && <Levels level={level} arg="hello" />}
       <div>
-      {!isAuthenticated && <LoginButton />}
+        {!isAuthenticated && <LoginButton />}
         {isAuthenticated && <LogoutButton />}
-        <Profile allUsers = {allUsers} setLevelProf={setLevel}/>
+        <Profile allUsers={allUsers} setCurrUserProf = {setCurrUser}setLevelProf={setLevel} />
       </div>
       {isAuthenticated && <img src={plant} className="imgprop" />}
-      {isAuthenticated &&  <div className="water">
-        <div className="progBar">
-          <ProgressBar animated variant="success" now={water} max={21} />
+      {isAuthenticated && (
+        <div className="water">
+          <div className="progBar">
+            <ProgressBar animated variant="success" now={water} max={21} />
+          </div>
+          <button onClick={clickHandlerWater} className="waterButton">
+            <img className="waterlogo" src={waterplant}></img>
+          </button>
         </div>
-        <button onClick={clickHandlerWater} className="waterButton">
-          <img className="waterlogo" src={waterplant}></img>
-        </button>
-      </div>}
-      {isAuthenticated && <div className="shop">
-      <Popup trigger={<button className="shopButton">
-          <img className="shoplogo" src={shopbutton}></img>
-        </button>} Cposition="top center">
-       <div>Popup content here !!</div>
-       </Popup>
-      </div>}
+      )}
+      {isAuthenticated && (
+        <div className="shop">
+          <Popup
+            trigger={
+              <button className="shopButton">
+                <img className="shoplogo" src={shopbutton}></img>
+              </button>
+            }
+            Cposition="top center"
+          >
+            <div>Popup content here !!</div>
+          </Popup>
+        </div>
+      )}
     </div>
-   
   );
-    
-
 }
 
 export default App;

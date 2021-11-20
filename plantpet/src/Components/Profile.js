@@ -19,6 +19,7 @@ const Profile = (props) => {
     }
     console.log(myUser);
     props.setLevelProf(myUser.PlantLevel);
+    props.setCurrUserProf(myUser)
     console.log("here-");
 
     if (!oldUser) {
