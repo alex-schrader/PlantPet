@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import plant from "./plant2.gif";
 import React, { useState, useEffect } from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
@@ -46,11 +45,14 @@ function App() {
  
 
   //isAuthenticated && setLevel(10);
-
+  const [allUsers, setAllUsers] = useState([])
   useEffect(()=> {
     console.log('in use effect!')
     axios.get("http://localhost:2500/users").then(function (response) {
+      let currUserData = JSON.stringify(user, null, 2)
       console.log("in axios get request")
+      console.log(currUserData)
+      setAllUsers(response.data)
       console.log(response.data)
       let allData = response.data["users"]
       console.log(allData["PlantLevel"])
@@ -65,7 +67,7 @@ function App() {
       <div>
       {!isAuthenticated && <LoginButton />}
         {isAuthenticated && <LogoutButton />}
-        <Profile/>
+        <Profile allUsers = {allUsers} setLevelProf={setLevel}/>
       </div>
       {isAuthenticated && <img src={plant} className="imgprop" />}
       {isAuthenticated &&  <div className="water">
