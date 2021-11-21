@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import plant from "./plant2.gif";
 import React, { useState, useEffect } from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
@@ -14,16 +13,19 @@ import LogoutButton from "./Components/Loginout/LogoutButton";
 import Profile from "./Components/Profile";
 import { useAuth0 } from "@auth0/auth0-react";
 //import axios from "axios";
-import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
 
-const axios = require("axios")
+const axios = require("axios");
+const cors = require("cors");
 
 function App() {
+  const { isLoading } = useAuth0();
+  //if (isLoading) {
+    //return <div>loading...</div>
+  //}
   const { user, isAuthenticated } = useAuth0();
 
-
- 
   //backend setup stuff
   /*const [data, setData] = React.useState(null);
 
@@ -37,6 +39,20 @@ function App() {
   const clickHandlerWater = () => {
     if (water === 20) {
       setWater(0);
+      let tempUser = currUser;
+      tempUser.PlantLevel = tempUser.PlantLevel + 0.25;
+      console.log("-here");
+      console.log(tempUser.UserID);
+      console.log("-here");
+      let tempStr = "http://localhost:2500/users/" + String(tempUser.UserID);
+      console.log(tempStr);
+      axios.patch(tempStr, tempUser)
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
       setLevel(level + 0.25);
       console.log("hi");
       console.log(level);
@@ -45,21 +61,23 @@ function App() {
     }
   };
   const [level, setLevel] = useState(1);
- 
+  const [currUser, setCurrUser] = useState([]);
 
   //isAuthenticated && setLevel(10);
-
-  useEffect(()=> {
-    console.log('in use effect!')
+  const [allUsers, setAllUsers] = useState([]);
+  useEffect(() => {
+    console.log("in use effect!");
     axios.get("http://localhost:2500/users").then(function (response) {
-      console.log("in axios get request")
-      console.log(response.data)
-      let allData = response.data["users"]
-      console.log(allData["PlantLevel"])
-      setLevel(5)
-    }); 
+      let currUserData = JSON.stringify(user, null, 2);
+      console.log("in axios get request");
+      console.log(currUserData);
+      setAllUsers(response.data);
+      console.log(response.data);
+      let allData = response.data["users"];
+      console.log(allData["PlantLevel"]);
+      setLevel(5);
+    });
   }, []);
-  
 
 
   return (
@@ -69,33 +87,45 @@ function App() {
          <Navbar.Brand href="#">Plant Pet Simulator</Navbar.Brand>
         </Container>
        </Navbar>
-      {isAuthenticated && <Levels level={level} arg="hello" />}
-      <div>
-      {!isAuthenticated && <LoginButton />}
-        {isAuthenticated && <LogoutButton />}
-        <Profile/>
-      </div>
-      {isAuthenticated && <img src={plant} className="imgprop" />}
-      {isAuthenticated &&  <div className="water">
-        <div className="progBar">
-          <ProgressBar animated variant="success" now={water} max={21} />
-        </div>
-        <button onClick={clickHandlerWater} className="waterButton">
-          <img className="waterlogo" src={waterplant}></img>
-        </button>
-      </div>}
-      {isAuthenticated && <div className="shop">
-      <Popup trigger={<button className="shopButton">
-          <img className="shoplogo" src={shopbutton}></img>
-        </button>} Cposition="top center">
-       <div>Popup content here !!</div>
-       </Popup>
-      </div>}
-    </div>
-   
-  );
-    
 
+      {isLoading && <div>loading...</div>}
+      {isAuthenticated && !isLoading && <Levels level={level} arg="hello" />}
+      <div>
+        {!isAuthenticated && !isLoading &&  <LoginButton />}
+        {isAuthenticated && !isLoading &&  <LogoutButton />}
+        <Profile
+          allUsers={allUsers}
+          setCurrUserProf={setCurrUser}
+          setLevelProf={setLevel}
+        />
+      </div>
+      {isAuthenticated && !isLoading &&  <img src={plant} className="imgprop" />}
+      {isAuthenticated && !isLoading &&  (
+        <div className="water">
+          <div className="progBar">
+            <ProgressBar animated variant="success" now={water} max={21} />
+          </div>
+          <button onClick={clickHandlerWater} className="waterButton">
+            <img className="waterlogo" src={waterplant}></img>
+          </button>
+        </div>
+      )}
+      {isAuthenticated && !isLoading &&  (
+        <div className="shop">
+          <Popup
+            trigger={
+              <button className="shopButton">
+                <img className="shoplogo" src={shopbutton}></img>
+              </button>
+            }
+            Cposition="top center"
+          >
+            <div>Popup content here !!</div>
+          </Popup>
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default App;
