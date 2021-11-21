@@ -2,6 +2,8 @@ import logo from "./logo.svg";
 import plant from "./plant2.gif";
 import React, { useState, useEffect } from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
+import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Levels from "./Components/Levels";
 import "./App.css";
@@ -30,7 +32,7 @@ function App() {
       .then((res) => res.json())
       .then((data) => setData(data.message));
   }, []);*/
-  document.body.style = 'background: #E6D1D1;';
+  document.body.style = 'background: #ACBD67;';
   const [water, setWater] = useState(0);
   const clickHandlerWater = () => {
     if (water === 20) {
@@ -59,8 +61,14 @@ function App() {
   }, []);
   
 
+
   return (
     <div className="App">
+       <Navbar expand="lg" variant="light" bg="light">
+        <Container>
+         <Navbar.Brand href="#">Plant Pet Simulator</Navbar.Brand>
+        </Container>
+       </Navbar>
       {isAuthenticated && <Levels level={level} arg="hello" />}
       <div>
       {!isAuthenticated && <LoginButton />}
