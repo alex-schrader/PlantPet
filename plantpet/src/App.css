@@ -15,6 +15,12 @@
   height:auto;
 }
 
+#container {
+  width: 200px;
+  height: 200px;
+  position: relative;
+}
+
 .waterButton {
   width:150px;
   height:150px;
@@ -31,6 +37,13 @@
 }
 .waterButton:hover {
   margin-bottom:10px;
+}
+
+.directions {
+  text-align: left;
+  position: absolute;
+  bottom: 35%;
+  left: 0;
 }
 
 .shoplogo{
@@ -54,6 +67,11 @@
 }
 .shopButton:hover {
   margin-bottom:10px;
+}
+
+.instructions{
+  width: 100%;
+  height: auto;
 }
 
 
