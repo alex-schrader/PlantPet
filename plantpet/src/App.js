@@ -15,6 +15,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 //import axios from "axios";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
+import Button from 'react-bootstrap/Button'
 
 const axios = require("axios");
 const cors = require("cors");
@@ -118,9 +119,17 @@ function App() {
                 <img className="shoplogo" src={shopbutton}></img>
               </button>
             }
-            Cposition="top center"
+            position="top center"
           >
-            <div>Popup content here !!</div>
+            {/* popup content here */}
+            <div> 
+              <Button variant="success" size="lg">
+                 Fertilizer
+              </Button>{' '}
+              <Button variant="warning" size="lg">
+                 Growth Light
+              </Button>{' '}
+            </div>
           </Popup>
         </div>
       )}
