@@ -42,9 +42,9 @@ function App() {
       console.log("-here");
       console.log(tempUser.UserID);
       console.log("-here");
-      let tempStr = "https://localhost:2500/users/" + String(tempUser.UserID);
-      axios
-        .patch(tempStr, tempUser)
+      let tempStr = "http://localhost:2500/users/" + String(tempUser.UserID);
+      console.log(tempStr);
+      axios.patch(tempStr, tempUser)
         .then(function (response) {
           console.log(response);
         })

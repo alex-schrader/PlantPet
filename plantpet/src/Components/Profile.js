@@ -12,7 +12,7 @@ const Profile = (props) => {
     console.log(data);
     console.log(user["sub"]);
     for (let i = 0; i < props.allUsers.users.length; i++) {
-      if (props.allUsers.users[i]["UserID"] == user["sub"]) {
+      if (props.allUsers.users[i]["UserID"] == user["sub"].split("|")[1]) {
         myUser = props.allUsers.users[i];
         oldUser = true;
       }
@@ -25,7 +25,7 @@ const Profile = (props) => {
     if (!oldUser) {
       //push new acc to database
       let newUser = {
-        UserID: user["sub"],
+        UserID: user["sub"].split("|")[1],
         PlantLevel: 0,
         SeedCount: 0,
         LastWaterDate: "0",
@@ -44,7 +44,7 @@ const Profile = (props) => {
   return (
     isAuthenticated && (
       <div>
-        {user["sub"]}
+        ID: {user["sub"].split("|")[1]}
       </div>
     )
   );
