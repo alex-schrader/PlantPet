@@ -5,8 +5,10 @@ import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Levels from "./Components/Levels";
+import Seed from "./Components/Seed";
 import "./App.css";
 import waterplant from "./water.png";
+import instructions from "./instructions.png";
 import shopbutton from "./shop.png";
 import LoginButton from "./Components/Loginout/LoginButton";
 import LogoutButton from "./Components/Loginout/LogoutButton";
@@ -61,8 +63,37 @@ function App() {
       setWater(water + 1);
     }
   };
+  
+  const clickFertilizer = () => {
+      let tempUser = currUser;
+      tempUser.PlantLevel = tempUser.PlantLevel + 0.1;
+      console.log("-here");
+      console.log(tempUser.UserID);
+      console.log("-here");
+      let tempStr = "http://localhost:2500/users/" + String(tempUser.UserID);
+      console.log(tempStr);
+      axios.patch(tempStr, tempUser)
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      setLevel(level + 0.1);
+      console.log("hi");
+      console.log(level);
+  
+  };
+
+  // const Modal = () => (
+  //   <Popup trigger={<button className="button"> Open Modal </button>} modal>
+  //     <span> Modal content </span>
+  //   </Popup>
+  // );
+
   const [level, setLevel] = useState(1);
   const [currUser, setCurrUser] = useState([]);
+  // const [seed, setSeed] = useState(1);
 
   //isAuthenticated && setLevel(10);
   const [allUsers, setAllUsers] = useState([]);
@@ -79,6 +110,7 @@ function App() {
       setLevel(5);
     });
   }, []);
+
 
 
   return (
@@ -102,6 +134,7 @@ function App() {
       </div>
       {isAuthenticated && !isLoading &&  <img src={plant} className="imgprop" />}
       {isAuthenticated && !isLoading &&  (
+        <div className="container">
         <div className="water">
           <div className="progBar">
             <ProgressBar animated variant="success" now={water} max={21} />
@@ -110,7 +143,15 @@ function App() {
             <img className="waterlogo" src={waterplant}></img>
           </button>
         </div>
+        <div className="directions">
+        <Popup trigger={<button className="button"> Instructions </button>} modal>
+          <span> <img className="instructions" src={instructions}></img> </span>
+        </Popup>
+        </div>
+        </div>
       )}
+
+      
       {isAuthenticated && !isLoading &&  (
         <div className="shop">
           <Popup
@@ -123,10 +164,10 @@ function App() {
           >
             {/* popup content here */}
             <div> 
-              <Button variant="success" size="lg">
+              <Button onClick={clickFertilizer} variant="success" size="lg">
                  Fertilizer
               </Button>{' '}
-              <Button variant="warning" size="lg">
+              <Button onClick={clickFertilizer} variant="warning" size="lg">
                  Growth Light
               </Button>{' '}
             </div>
