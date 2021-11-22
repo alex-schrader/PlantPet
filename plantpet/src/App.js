@@ -1,4 +1,5 @@
 import plant from "./plant2.gif";
+import loading from "./loading.gif";
 import React, { useState, useEffect } from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Navbar from 'react-bootstrap/Navbar';
@@ -8,8 +9,10 @@ import Levels from "./Components/Levels";
 import Seed from "./Components/Seed";
 import "./App.css";
 import waterplant from "./water.png";
+import logo from "./gamelogo.png";
 import instructions from "./instructions.png";
 import shopbutton from "./shop.png";
+import info from "./info.png";
 import LoginButton from "./Components/Loginout/LoginButton";
 import LogoutButton from "./Components/Loginout/LogoutButton";
 import Profile from "./Components/Profile";
@@ -115,13 +118,13 @@ function App() {
 
   return (
     <div className="App">
-       <Navbar expand="lg" variant="light" bg="light">
+       <Navbar className="navbar-custom" expand="lg" variant="light" bg="light">
         <Container>
-         <Navbar.Brand href="#">Plant Pet Simulator</Navbar.Brand>
+         <Navbar.Brand href="#"><img className="logo" src={logo}></img></Navbar.Brand>
         </Container>
        </Navbar>
 
-      {isLoading && <div>loading...</div>}
+      {isLoading && <div><img className="loading" src={loading}></img></div>}
       {isAuthenticated && !isLoading && <Levels level={level} arg="hello" />}
       <div>
         {!isAuthenticated && !isLoading &&  <LoginButton />}
@@ -144,7 +147,7 @@ function App() {
           </button>
         </div>
         <div className="directions">
-        <Popup trigger={<button className="button"> Instructions </button>} modal>
+        <Popup trigger={<button className="directions"> <img className="instlogo" src={info}></img> </button>} modal>
           <span> <img className="instructions" src={instructions}></img> </span>
         </Popup>
         </div>
