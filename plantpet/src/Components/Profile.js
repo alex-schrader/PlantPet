@@ -30,6 +30,7 @@ const Profile = (props) => {
         SeedCount: 0,
         LastWaterDate: "0",
         Friends: "0",
+        Name: user["name"]
       };
       props.allUsers.users.push(newUser);
       axios

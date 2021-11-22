@@ -173,18 +173,7 @@ function App() {
           </Popup>
         </div>
       )}
-<<<<<<< HEAD
 
-        <Popup className = "leaderboard"
-          trigger={
-            <button className="leaderboard">
-              Leaderboard
-            </button>
-          }
-        ><Leaderboard/>hello
-        </Popup>
-
-=======
       {isAuthenticated && !isLoading &&  (
        <Popup
        trigger={
@@ -192,12 +181,11 @@ function App() {
            Leaderboard
          </button>
        }
-     >
+     ><Leaderboard/>
        </Popup>
       )}
         
     </div>
->>>>>>> 7bb6d0c65828a7968496bb1d9f53d0fbbaf7ffd9
     </div>
   );
 }
