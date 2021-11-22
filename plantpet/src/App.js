@@ -172,16 +172,17 @@ function App() {
           </Popup>
         </div>
       )}
-
-        <Popup
-          trigger={
-            <button className="leaderboard">
-              Leaderboard
-            </button>
-          }
-        >
-        </Popup>
-
+      {isAuthenticated && !isLoading &&  (
+       <Popup
+       trigger={
+         <button className="leaderboard">
+           Leaderboard
+         </button>
+       }
+     >
+       </Popup>
+      )}
+        
     </div>
     </div>
   );
