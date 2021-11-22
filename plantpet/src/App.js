@@ -94,6 +94,9 @@ function App() {
     console.log("hi");
     console.log(level);
     setBackground(growBackground)
+    setTimeout(() => {
+      setBackground(defBackground)
+    }, 3000)
   };
 
   const [level, setLevel] = useState(1);
