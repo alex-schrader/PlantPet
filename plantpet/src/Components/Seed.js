@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import { useState } from "react";
 import "./Seed.css";
 
-const Seed = (seed) => {
+const Seed = () => {
   return (
     <div className="seed">
       <b>Seeds:</b> {5}
