@@ -207,8 +207,8 @@
 
 .leaderHolder{
   text-align: left;
-  padding-top:-30px;
-  padding-left:160px;
+  padding-top:30px;
+  padding-left:0;
 }
 
 .leader{
