@@ -160,8 +160,10 @@ function App() {
           {isAuthenticated && !isLoading && (
             <div>
             <Levels level={level} arg="hello" />
-            <Seed seed={seed} />
             </div>
+          )}
+          {isAuthenticated && !isLoading && (
+            <Seed className = "seed" seed={seed} />
           )}
           <div className = "leaderHolder">
             {isAuthenticated && !isLoading && (

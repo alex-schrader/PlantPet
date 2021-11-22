@@ -209,3 +209,10 @@
 .navbar-custom {
   background-color: #ACBD67;
 }
+
+.seed{
+  position: absolute;
+  width:10%;
+  text-align: right;
+  right: 16px
+  }
