@@ -177,6 +177,16 @@ function App() {
           </Popup>
         </div>
       )}
+
+        <Popup
+          trigger={
+            <button className="leaderboard">
+              Leaderboard
+            </button>
+          }
+        >
+        </Popup>
+
     </div>
   );
 }
