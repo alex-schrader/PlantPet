@@ -87,13 +87,14 @@ function App() {
         console.log(error);
       });
     setLevel(level + 0.1);
+    setSeed(seed+1);
     console.log("hi");
     console.log(level);
   };
 
   const [level, setLevel] = useState(1);
   const [currUser, setCurrUser] = useState([]);
-  // const [seed, setSeed] = useState(1);
+  const [seed, setSeed] = useState(0);
 
   //isAuthenticated && setLevel(10);
   const [allUsers, setAllUsers] = useState([]);
@@ -157,7 +158,10 @@ function App() {
         )}
         <div>
           {isAuthenticated && !isLoading && (
+            <div>
             <Levels level={level} arg="hello" />
+            <Seed seed={seed} />
+            </div>
           )}
           <div className = "leaderHolder">
             {isAuthenticated && !isLoading && (
