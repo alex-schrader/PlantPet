@@ -45,6 +45,23 @@
   position: center;
 }
 
+.waterButton {
+  width:150px;
+  height:150px;
+  text-align: left;
+  position: absolute;
+  bottom: 5%;
+  left: 0;
+  transform: translateY(-50%);
+  color: #F9FFF2;
+  border-radius: 20px;
+  border-color: #094986;
+  margin-bottom: 5px;
+  transition: margin-bottom .5s;
+}
+.waterButton:hover {
+  margin-bottom:10px;
+}
 
 .logo{
   width: auto;
@@ -175,13 +192,18 @@
 }
 
 .leaderboard{
-  width:30px;
+  width:100px;
   height:30px;
   width:14%;
-  position: fixed;
   bottom: 77%;
   left: 0;
   transform: translateY(-50%);
+}
+
+.leaderHolder{
+  text-align: left;
+  padding-top:-30px;
+  padding-left:160px;
 }
 
 .navbar-custom {
