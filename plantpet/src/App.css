@@ -192,18 +192,28 @@
 }
 
 .leaderboard{
-  width:100px;
+  width:120px;
   height:30px;
-  width:14%;
   bottom: 77%;
   left: 0;
   transform: translateY(-50%);
+  background-color: #F9FFF2;
+  border-radius: 10px;
+  border-color: #094986;
+  margin-bottom: 0;
+  transition: margin-bottom .5s;
 }
+
 
 .leaderHolder{
   text-align: left;
   padding-top:-30px;
   padding-left:160px;
+}
+
+.leader{
+  width:100px;
+  height:30px;
 }
 
 .navbar-custom {

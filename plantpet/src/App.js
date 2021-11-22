@@ -10,6 +10,7 @@ import Levels from "./Components/Levels";
 import Seed from "./Components/Seed";
 import "./App.css";
 import waterplant from "./water.png";
+import leaderboard from "./leaderboard.png";
 import logo from "./gamelogo.png";
 import instructions from "./instructions.png";
 import shopbutton from "./shop.png";
@@ -168,7 +169,7 @@ function App() {
           <div className = "leaderHolder">
             {isAuthenticated && !isLoading && (
               <Popup
-                trigger={<button className="leaderboard">Leaderboard</button>}
+                trigger={<button className="leaderboard"><img src={leaderboard} className="leader" /></button>}
               >
                 <Leaderboard />
               </Popup>
