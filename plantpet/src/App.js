@@ -21,6 +21,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import Button from 'react-bootstrap/Button'
+import Leaderboard from './Components/Leaderboard'
 
 const axios = require("axios");
 const cors = require("cors");
@@ -178,13 +179,13 @@ function App() {
         </div>
       )}
 
-        <Popup
+        <Popup className = "leaderboard"
           trigger={
             <button className="leaderboard">
               Leaderboard
             </button>
           }
-        >
+        ><Leaderboard/>hello
         </Popup>
 
     </div>

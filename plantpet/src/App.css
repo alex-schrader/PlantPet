@@ -27,6 +27,11 @@
   position: center;
 }
 
+.leaderboard {
+  margin-left: 50px;
+  margin-top: 100px;
+}
+
 .waterButton {
   width:150px;
   height:150px;
