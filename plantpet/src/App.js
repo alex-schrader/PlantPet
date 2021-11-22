@@ -155,8 +155,20 @@ function App() {
             <img className="loading" src={loading}></img>
           </div>
         )}
-        {isAuthenticated && !isLoading && <Levels level={level} arg="hello" />}
-        <div></div>
+        <div>
+          {isAuthenticated && !isLoading && (
+            <Levels level={level} arg="hello" />
+          )}
+          <div className = "leaderHolder">
+            {isAuthenticated && !isLoading && (
+              <Popup
+                trigger={<button className="leaderboard">Leaderboard</button>}
+              >
+                <Leaderboard />
+              </Popup>
+            )}
+          </div>
+        </div>
         {isAuthenticated && !isLoading && (
           <img src={plant} className="imgprop" />
         )}
@@ -194,12 +206,6 @@ function App() {
               </div>
             </Popup>
           </div>
-        )}
-
-        {isAuthenticated && !isLoading && (
-          <Popup trigger={<button className="leaderboard">Leaderboard</button>}>
-            <Leaderboard />
-          </Popup>
         )}
       </div>
     </div>
