@@ -1,4 +1,4 @@
-import plant from "./plant2.gif";
+import plant from "./plant_logo.png";
 import loading from "./loading.gif";
 import React, { useState, useEffect } from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
@@ -14,7 +14,7 @@ import instructions from "./instructions.png";
 import shopbutton from "./shop.png";
 import info from "./info.png";
 import LoginButton from "./Components/Loginout/LoginButton";
-import LogoutButton from "./Components/Loginout/LogoutButton";
+import LogoutButton from "./Components/Loginout/LogoutButton"
 import Profile from "./Components/Profile";
 import { useAuth0 } from "@auth0/auth0-react";
 //import axios from "axios";
