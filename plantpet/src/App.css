@@ -178,7 +178,7 @@
   width:30px;
   height:30px;
   width:14%;
-  position: absolute;
+  position: fixed;
   bottom: 77%;
   left: 0;
   transform: translateY(-50%);
