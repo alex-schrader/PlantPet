@@ -1,6 +1,6 @@
 import plant from "./plant_logo.png";
 import loading from "./loading.gif";
-import background from "./background.png";
+import defBackground from "./background.png";
 import React, { useState, useEffect } from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Navbar from "react-bootstrap/Navbar";
@@ -24,11 +24,13 @@ import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import Button from "react-bootstrap/Button";
 import Leaderboard from "./Components/Leaderboard";
+import growBackground from "./growth.png"
 
 const axios = require("axios");
 const cors = require("cors");
 
 function App() {
+  const [background, setBackground] = useState(defBackground)
   const { isLoading } = useAuth0();
   //if (isLoading) {
   //return <div>loading...</div>
@@ -91,6 +93,7 @@ function App() {
     setSeed(seed+1);
     console.log("hi");
     console.log(level);
+    setBackground(growBackground)
   };
 
   const [level, setLevel] = useState(1);
@@ -114,7 +117,7 @@ function App() {
   }, []);
 
   return (
-    <div styles={{ backgroundImage: `url(${background})` }}>
+    <div style={{ backgroundImage: `url(${background})` }}>
       <div className="App">
         <Navbar
           className="navbar-custom"
