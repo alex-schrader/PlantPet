@@ -1,0 +1,12 @@
+.login{
+  width:100px;
+  height:40px;
+  text-align: center;
+  position: fixed;
+  transform: translateY(-50%);
+  background-color: #F9FFF2;
+  border-radius: 20px;
+  border-color: #094986;
+  margin-bottom: 0;
+  transition: margin-bottom .5s;
+}
