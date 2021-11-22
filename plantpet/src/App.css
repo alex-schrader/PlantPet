@@ -3,11 +3,29 @@
 }
 
 .progBar{
-  width:14%;
-  position: absolute;
-  bottom: 11%;
+  width:150px;
+  position: fixed;
+  bottom: 0;
   left: 0;
   transform: translateY(-50%);
+}
+
+.waterButton {
+  width:150px;
+  height:150px;
+  text-align: left;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  transform: translateY(-50%);
+  color: #F9FFF2;
+  border-radius: 20px;
+  border-color: #094986;
+  margin-bottom: 0;
+  transition: margin-bottom .5s;
+}
+.waterButton:hover {
+  margin-bottom:10px;
 }
 
 .waterlogo{
@@ -63,10 +81,10 @@
 .directions {
   width:50px;
   height:50px;
-  text-align: left;
-  position: absolute;
-  bottom: 30%;
-  left: 0;
+  text-align: right;
+  position: fixed;
+  /* bottom: 10; */
+  right: 2%;
   transform: translateY(-50%);
   color: #F9FFF2;
   border-radius: 20px;
@@ -87,12 +105,12 @@
 }
 
 .shopButton {
+  position: fixed;
+  bottom: 0;
+  right: 0;
   width:150px;
   height:150px;
   text-align: right;
-  position: absolute;
-  bottom: 5%;
-  right: 0;
   transform: translateY(-50%);
   color: #F9FFF2;
   border-radius: 20px;

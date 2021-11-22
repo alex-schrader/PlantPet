@@ -1,5 +1,6 @@
 import plant from "./plant_logo.png";
 import loading from "./loading.gif";
+import background from "./background.png";
 import React, { useState, useEffect } from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Navbar from 'react-bootstrap/Navbar';
@@ -89,11 +90,6 @@ function App() {
   
   };
 
-  // const Modal = () => (
-  //   <Popup trigger={<button className="button"> Open Modal </button>} modal>
-  //     <span> Modal content </span>
-  //   </Popup>
-  // );
 
   const [level, setLevel] = useState(1);
   const [currUser, setCurrUser] = useState([]);
@@ -115,13 +111,17 @@ function App() {
     });
   }, []);
 
-
-
   return (
+    <div  styles={{ backgroundImage:`url(${background})` }}>
     <div className="App">
        <Navbar className="navbar-custom" expand="lg" variant="light" bg="light">
         <Container>
          <Navbar.Brand href="#"><img className="logo" src={logo}></img></Navbar.Brand>
+         <Navbar.Text>
+         <Popup trigger={<button className="directions"> <img className="instlogo" src={info}></img> </button>} modal>
+          <span> <img className="instructions" src={instructions}></img> </span>
+        </Popup>
+        </Navbar.Text>
         </Container>
        </Navbar>
 
@@ -146,11 +146,6 @@ function App() {
           <button onClick={clickHandlerWater} className="waterButton">
             <img className="waterlogo" src={waterplant}></img>
           </button>
-        </div>
-        <div className="directions">
-        <Popup trigger={<button className="directions"> <img className="instlogo" src={info}></img> </button>} modal>
-          <span> <img className="instructions" src={instructions}></img> </span>
-        </Popup>
         </div>
         </div>
       )}
@@ -178,6 +173,7 @@ function App() {
           </Popup>
         </div>
       )}
+<<<<<<< HEAD
 
         <Popup className = "leaderboard"
           trigger={
@@ -188,6 +184,20 @@ function App() {
         ><Leaderboard/>hello
         </Popup>
 
+=======
+      {isAuthenticated && !isLoading &&  (
+       <Popup
+       trigger={
+         <button className="leaderboard">
+           Leaderboard
+         </button>
+       }
+     >
+       </Popup>
+      )}
+        
+    </div>
+>>>>>>> 7bb6d0c65828a7968496bb1d9f53d0fbbaf7ffd9
     </div>
   );
 }
