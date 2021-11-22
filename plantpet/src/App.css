@@ -202,8 +202,8 @@
 
 .leaderHolder{
   text-align: left;
-  padding-top:30px;
-  padding-left:10px;
+  padding-top:-30px;
+  padding-left:160px;
 }
 
 .navbar-custom {
