@@ -16,9 +16,6 @@ const Leaderboard = () => {
           </p>
         ))
     );
-    console.log("here--");
-    console.log(allData);
-    console.log("here--");
   });
   return <div>{allData}</div>;
 };

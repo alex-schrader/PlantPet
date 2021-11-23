@@ -31,6 +31,7 @@ const cors = require("cors");
 
 function App() {
   const [background, setBackground] = useState(defBackground);
+  const [fertilize, setFertilize] = useState(false);
   const { isLoading } = useAuth0();
   //if (isLoading) {
   //return <div>loading...</div>
@@ -48,15 +49,16 @@ function App() {
   document.body.style = "background: #ACBD67;";
   const [water, setWater] = useState(0);
   const clickHandlerWater = () => {
-    if (water === 20) {
+    if (!fertilize) {
+      setWater((oldwater)=> oldwater+1);
+    } else {
+      setWater((oldwater)=> oldwater+7);
+    }
+    if (water > 19 || (water > 13 && fertilize) ) {
       setWater(0);
       let tempUser = currUser;
       tempUser.PlantLevel = tempUser.PlantLevel + 0.25;
-      console.log("-here");
-      console.log(tempUser.UserID);
-      console.log("-here");
       let tempStr = "http://localhost:2500/users/" + String(tempUser.UserID);
-      console.log(tempStr);
       axios
         .patch(tempStr, tempUser)
         .then(function (response) {
@@ -66,10 +68,6 @@ function App() {
           console.log(error);
         });
       setLevel(level + 0.25);
-      console.log("hi");
-      console.log(level);
-    } else {
-      setWater(water + 1);
     }
   };
 
@@ -91,12 +89,12 @@ function App() {
       });
     setLevel(level + 0.1);
     setSeed(seed + 5);
-    console.log("hi");
-    console.log(level);
     setBackground(growBackground);
+    setFertilize(true);
     setTimeout(() => {
       setBackground(defBackground);
-    }, 3000);
+      setFertilize(false);
+    }, 5000);
   };
 
   const [level, setLevel] = useState(1);
@@ -109,19 +107,30 @@ function App() {
     const interval = setInterval(() => {
       console.log(seed);
       setSeed((prevSeed) => prevSeed + 1);
+      let tempUser = currUser;
+      tempUser.SeedCount = tempUser.SeedCount + 1;
+      let tempStr = "http://localhost:2500/users/" + String(tempUser.UserID);
+      console.log("currUser:");
+      console.log(currUser);
+      /*axios
+        .patch(tempStr, tempUser)
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });*/
     }, 5000);
+
+    setLevel(level + 0.25);
     return () => clearInterval(interval);
   }, []);
   useEffect(() => {
     console.log("in use effect!");
     axios.get("http://localhost:2500/users").then(function (response) {
       let currUserData = JSON.stringify(user, null, 2);
-      console.log("in axios get request");
-      console.log(currUserData);
       setAllUsers(response.data);
-      console.log(response.data);
       let allData = response.data["users"];
-      console.log(allData["PlantLevel"]);
       setLevel(5);
     });
   }, []);
@@ -144,6 +153,7 @@ function App() {
                 allUsers={allUsers}
                 setCurrUserProf={setCurrUser}
                 setLevelProf={setLevel}
+                setSeedProf={setSeed}
               />
               {!isAuthenticated && !isLoading && <LoginButton />}
               {isAuthenticated && !isLoading && <LogoutButton />}
