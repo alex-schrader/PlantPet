@@ -24,13 +24,13 @@ import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import Button from "react-bootstrap/Button";
 import Leaderboard from "./Components/Leaderboard";
-import growBackground from "./growth.png"
+import growBackground from "./growth.png";
 
 const axios = require("axios");
 const cors = require("cors");
 
 function App() {
-  const [background, setBackground] = useState(defBackground)
+  const [background, setBackground] = useState(defBackground);
   const { isLoading } = useAuth0();
   //if (isLoading) {
   //return <div>loading...</div>
@@ -90,13 +90,13 @@ function App() {
         console.log(error);
       });
     setLevel(level + 0.1);
-    setSeed(seed+1);
+    setSeed(seed + 5);
     console.log("hi");
     console.log(level);
-    setBackground(growBackground)
+    setBackground(growBackground);
     setTimeout(() => {
-      setBackground(defBackground)
-    }, 3000)
+      setBackground(defBackground);
+    }, 3000);
   };
 
   const [level, setLevel] = useState(1);
@@ -105,6 +105,13 @@ function App() {
 
   //isAuthenticated && setLevel(10);
   const [allUsers, setAllUsers] = useState([]);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      console.log(seed);
+      setSeed((prevSeed) => prevSeed + 1);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
   useEffect(() => {
     console.log("in use effect!");
     axios.get("http://localhost:2500/users").then(function (response) {
@@ -166,16 +173,20 @@ function App() {
         <div>
           {isAuthenticated && !isLoading && (
             <div>
-            <Levels level={level} arg="hello" />
+              <Levels level={level} arg="hello" />
             </div>
           )}
           {isAuthenticated && !isLoading && (
-            <Seed className = "seed" seed={seed} />
+            <Seed className="seed" seed={seed} />
           )}
-          <div className = "leaderHolder">
+          <div className="leaderHolder">
             {isAuthenticated && !isLoading && (
               <Popup
-                trigger={<button className="leaderboard"><img src={leaderboard} className="leader" /></button>}
+                trigger={
+                  <button className="leaderboard">
+                    <img src={leaderboard} className="leader" />
+                  </button>
+                }
               >
                 <Leaderboard />
               </Popup>
