@@ -8,19 +8,15 @@ const Profile = (props) => {
   let myUser = [];
   let oldUser = false;
   if (data) {
-    console.log("here-");
-    console.log(data);
-    console.log(user["sub"]);
     for (let i = 0; i < props.allUsers.users.length; i++) {
       if (props.allUsers.users[i]["UserID"] == user["sub"].split("|")[1]) {
         myUser = props.allUsers.users[i];
         oldUser = true;
       }
     }
-    console.log(myUser);
     props.setLevelProf(myUser.PlantLevel);
     props.setCurrUserProf(myUser);
-    console.log("here-");
+    props.setSeedProf(myUser.SeedCount)
 
     if (!oldUser) {
       //push new acc to database
