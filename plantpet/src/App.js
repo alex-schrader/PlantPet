@@ -90,7 +90,33 @@ function App() {
         console.log(error);
       });
     setLevel(level + 0.1);
-    setSeed(seed+1);
+    setSeed(seed-5);
+    console.log("hi");
+    console.log(level);
+    setBackground(growBackground)
+    setTimeout(() => {
+      setBackground(defBackground)
+    }, 3000)
+  };
+
+  const clickGrowth = () => {
+    let tempUser = currUser;
+    tempUser.PlantLevel = tempUser.PlantLevel + 0.1;
+    console.log("-here");
+    console.log(tempUser.UserID);
+    console.log("-here");
+    let tempStr = "http://localhost:2500/users/" + String(tempUser.UserID);
+    console.log(tempStr);
+    axios
+      .patch(tempStr, tempUser)
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    setLevel(level + 0.2);
+    setSeed(seed-10);
     console.log("hi");
     console.log(level);
     setBackground(growBackground)
@@ -101,7 +127,7 @@ function App() {
 
   const [level, setLevel] = useState(1);
   const [currUser, setCurrUser] = useState([]);
-  const [seed, setSeed] = useState(0);
+  const [seed, setSeed] = useState(50);
 
   //isAuthenticated && setLevel(10);
   const [allUsers, setAllUsers] = useState([]);
@@ -211,9 +237,9 @@ function App() {
               {/* popup content here */}
               <div>
                 <Button onClick={clickFertilizer} variant="success" size="lg">
-                  Fertilizer
+                   Fertilizer 
                 </Button>{" "}
-                <Button onClick={clickFertilizer} variant="warning" size="lg">
+                <Button onClick={clickGrowth} variant="warning" size="lg">
                   Growth Light
                 </Button>{" "}
               </div>
