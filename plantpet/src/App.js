@@ -48,12 +48,14 @@ function App() {
   }, []);*/
   document.body.style = "background: #ACBD67;";
   const [water, setWater] = useState(0);
+
   const clickHandlerWater = () => {
     if (!fertilize) {
       setWater((oldwater)=> oldwater+1);
     } else {
       setWater((oldwater)=> oldwater+7);
     }
+    //raise plant level when water increases
     if (water > 19 || (water > 13 && fertilize) ) {
       setWater(0);
       let tempUser = currUser;
@@ -126,6 +128,7 @@ function App() {
     }, 5000);
   };
 
+  //use usestate to allow level, seed count to change
   const [level, setLevel] = useState(1);
   const [currUser, setCurrUser] = useState([]);
   const [seed, setSeed] = useState(50);
@@ -163,7 +166,8 @@ function App() {
       setLevel(5);
     });
   }, []);
-
+  //Add login components, instruction page, loading screen, leaderboard
+  //Shop button with fertilizer and growth light functionality
   return (
     <div style={{ backgroundImage: `url(${background})` }}>
       <div className="App">
