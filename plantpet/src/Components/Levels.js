@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import "./Levels.css";
 
+//create level progress bar
 const Levels = (props) => {
   return (
     <div className="level">
