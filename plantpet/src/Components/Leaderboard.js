@@ -9,7 +9,7 @@ const Leaderboard = () => {
     setAllData(
       response.data["users"]
         .sort((a, b) => b.PlantLevel - a.PlantLevel)
-        .slice(0, 10)
+        .slice(0, 5)
         .map((x, index) => (
           <p>
             {index + 1}. {x.Name}: {Math.round(x.PlantLevel)}

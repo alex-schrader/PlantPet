@@ -224,15 +224,20 @@ function App() {
           )}
           <div className="leaderHolder">
             {isAuthenticated && !isLoading && (
-              <Popup
-                trigger={
-                  <button className="leaderboard">
-                    <img src={leaderboard} className="leader" />
-                  </button>
-                }
-              >
-                <Leaderboard />
-              </Popup>
+              <div className="leaderb">
+                <Popup
+                  
+                  trigger={
+                    <button className="leaderboard">
+                      <img src={leaderboard} className="leader" />
+                    </button>
+                  }
+                >
+                  <div>
+                    <Leaderboard />
+                  </div>
+                </Popup>
+              </div>
             )}
           </div>
         </div>
