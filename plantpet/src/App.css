@@ -123,7 +123,10 @@
   margin-left: 50px;
 }
 
-
+.profi {
+  text-align: center;
+  margin-right: 50px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -208,6 +211,12 @@
   border-color: #094986;
   margin-bottom: 0;
   transition: margin-bottom .5s;
+}
+
+.seedbox{
+  width:120px;
+
+
 }
 
 

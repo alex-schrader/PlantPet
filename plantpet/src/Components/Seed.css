@@ -1,4 +1,9 @@
 .seed{
-  width:10%;
-  text-align: right;
-  }
+  color: lightblue;
+  background-color: #F9FFF2;
+  border-radius: 10px;
+  border-color: #094986;
+  width:120px;
+  height:30px;
+  text-align: center;
+}

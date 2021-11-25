@@ -76,31 +76,31 @@ function App() {
 
   const clickFertilizer = () => {
     if (seed > 10) {
-    let tempUser = currUser;
-    tempUser.PlantLevel = tempUser.PlantLevel + 0.1;
-    console.log("-here");
-    console.log(tempUser.UserID);
-    console.log("-here");
-    let tempStr = "http://localhost:2500/users/" + String(tempUser.UserID);
-    console.log(tempStr);
-    axios
-      .patch(tempStr, tempUser)
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    setLevel(level + 0.1);
-    setFertilize(true);
-    setSeed(seed - 5);
-    console.log("hi");
-    console.log(level);
-    setBackground(growBackground);
-    setTimeout(() => {
-      setBackground(defBackground);
-    }, 3000);
-  }
+      let tempUser = currUser;
+      tempUser.PlantLevel = tempUser.PlantLevel + 0.1;
+      console.log("-here");
+      console.log(tempUser.UserID);
+      console.log("-here");
+      let tempStr = "http://localhost:2500/users/" + String(tempUser.UserID);
+      console.log(tempStr);
+      axios
+        .patch(tempStr, tempUser)
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      setLevel(level + 0.1);
+      setFertilize(true);
+      setSeed(seed - 5);
+      console.log("hi");
+      console.log(level);
+      setBackground(growBackground);
+      setTimeout(() => {
+        setBackground(defBackground);
+      }, 3000);
+    }
   };
 
   const clickGrowth = () => {
@@ -187,12 +187,14 @@ function App() {
               <img className="logo" src={logo}></img>
             </Navbar.Brand>
             <Navbar.Text>
-              <Profile
-                allUsers={allUsers}
-                setCurrUserProf={setCurrUser}
-                setLevelProf={setLevel}
-                setSeedProf={setSeed}
-              />
+              <div className="profi">
+                <Profile
+                  allUsers={allUsers}
+                  setCurrUserProf={setCurrUser}
+                  setLevelProf={setLevel}
+                  setSeedProf={setSeed}
+                />
+              </div>
 
               {isAuthenticated && !isLoading && <LogoutButton />}
               <Popup
@@ -225,7 +227,9 @@ function App() {
             </div>
           )}
           {isAuthenticated && !isLoading && (
-            <Seed className="seed" seed={seed} />
+            <div className="seedbox">
+              <Seed seed={seed} />
+            </div>
           )}
           <div className="leaderHolder">
             {isAuthenticated && !isLoading && (
