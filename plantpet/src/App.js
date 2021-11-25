@@ -33,19 +33,10 @@ function App() {
   const [background, setBackground] = useState(defBackground);
   const [fertilize, setFertilize] = useState(false);
   const { isLoading } = useAuth0();
-  //if (isLoading) {
-  //return <div>loading...</div>
-  //}
+
   const { user, isAuthenticated } = useAuth0();
 
-  //backend setup stuff
-  /*const [data, setData] = React.useState(null);
-
-  React.useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, []);*/
+ 
   document.body.style = "background: #ACBD67;";
   const [water, setWater] = useState(0);
 
@@ -138,7 +129,6 @@ function App() {
   const [currUser, setCurrUser] = useState([]);
   const [seed, setSeed] = useState(50);
 
-  //isAuthenticated && setLevel(10);
   const [allUsers, setAllUsers] = useState([]);
   useEffect(() => {
     const interval = setInterval(() => {
@@ -149,14 +139,6 @@ function App() {
       let tempStr = "http://localhost:2500/users/" + String(tempUser.UserID);
       console.log("currUser:");
       console.log(currUser);
-      /*axios
-        .patch(tempStr, tempUser)
-        .then(function (response) {
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });*/
     }, 5000);
 
     setLevel(level + 0.25);
