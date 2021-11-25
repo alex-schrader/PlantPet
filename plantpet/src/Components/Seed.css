@@ -5,5 +5,8 @@
   border-color: #094986;
   width:120px;
   height:30px;
-  text-align: center;
+  text-align: left;
+  font-family: 'Fredoka One', cursive;
+  padding-right:33px;
+  padding-top: 2px;
 }
