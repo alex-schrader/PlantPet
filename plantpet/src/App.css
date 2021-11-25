@@ -116,6 +116,9 @@
 .shopButton:hover {
   margin-bottom:10px;
 }
+.login {
+  text-align:center;
+}
 
 
 .App-logo {

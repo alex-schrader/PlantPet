@@ -51,12 +51,12 @@ function App() {
 
   const clickHandlerWater = () => {
     if (!fertilize) {
-      setWater((oldwater)=> oldwater+1);
+      setWater((oldwater) => oldwater + 1);
     } else {
-      setWater((oldwater)=> oldwater+7);
+      setWater((oldwater) => oldwater + 7);
     }
     //raise plant level when water increases
-    if (water > 19 || (water > 13 && fertilize) ) {
+    if (water > 19 || (water > 13 && fertilize)) {
       setWater(0);
       let tempUser = currUser;
       tempUser.PlantLevel = tempUser.PlantLevel + 0.25;
@@ -91,13 +91,13 @@ function App() {
       });
     setLevel(level + 0.1);
     setFertilize(true);
-    setSeed(seed-5);
+    setSeed(seed - 5);
     console.log("hi");
     console.log(level);
-    setBackground(growBackground)
+    setBackground(growBackground);
     setTimeout(() => {
-      setBackground(defBackground)
-    }, 3000)
+      setBackground(defBackground);
+    }, 3000);
   };
 
   const clickGrowth = () => {
@@ -117,7 +117,7 @@ function App() {
         console.log(error);
       });
     setLevel(level + 0.2);
-    setSeed(seed-10);
+    setSeed(seed - 10);
     console.log("hi");
     console.log(level);
     setBackground(growBackground);
@@ -188,7 +188,7 @@ function App() {
                 setLevelProf={setLevel}
                 setSeedProf={setSeed}
               />
-              {!isAuthenticated && !isLoading && <LoginButton />}
+
               {isAuthenticated && !isLoading && <LogoutButton />}
               <Popup
                 trigger={
@@ -239,6 +239,7 @@ function App() {
         {isAuthenticated && !isLoading && (
           <img src={plant} className="imgprop" />
         )}
+        {!isAuthenticated && !isLoading && <LoginButton className="login" />}
         {isAuthenticated && !isLoading && (
           <div className="container">
             <div className="water">
@@ -265,7 +266,7 @@ function App() {
               {/* popup content here */}
               <div>
                 <Button onClick={clickFertilizer} variant="success" size="lg">
-                   Fertilizer 
+                  Fertilizer
                 </Button>{" "}
                 <Button onClick={clickGrowth} variant="warning" size="lg">
                   Growth Light
