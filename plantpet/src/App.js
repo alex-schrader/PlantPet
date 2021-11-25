@@ -70,11 +70,12 @@ function App() {
           console.log(error);
         });
       setLevel(level + 0.25);
-      setSeed(oldSeed => oldSeed + 5)
+      setSeed((oldSeed) => oldSeed + 5);
     }
   };
 
   const clickFertilizer = () => {
+    if (seed > 10) {
     let tempUser = currUser;
     tempUser.PlantLevel = tempUser.PlantLevel + 0.1;
     console.log("-here");
@@ -99,34 +100,37 @@ function App() {
     setTimeout(() => {
       setBackground(defBackground);
     }, 3000);
+  }
   };
 
   const clickGrowth = () => {
-    let tempUser = currUser;
-    tempUser.PlantLevel = tempUser.PlantLevel + 0.1;
-    console.log("-here");
-    console.log(tempUser.UserID);
-    console.log("-here");
-    let tempStr = "http://localhost:2500/users/" + String(tempUser.UserID);
-    console.log(tempStr);
-    axios
-      .patch(tempStr, tempUser)
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    setLevel(level + 0.2);
-    setSeed(seed - 10);
-    console.log("hi");
-    console.log(level);
-    setBackground(growBackground);
-    setFertilize(true);
-    setTimeout(() => {
-      setBackground(defBackground);
-      setFertilize(false);
-    }, 5000);
+    if (seed > 10) {
+      let tempUser = currUser;
+      tempUser.PlantLevel = tempUser.PlantLevel + 0.1;
+      console.log("-here");
+      console.log(tempUser.UserID);
+      console.log("-here");
+      let tempStr = "http://localhost:2500/users/" + String(tempUser.UserID);
+      console.log(tempStr);
+      axios
+        .patch(tempStr, tempUser)
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      setLevel(level + 0.2);
+      setSeed(seed - 10);
+      console.log("hi");
+      console.log(level);
+      setBackground(growBackground);
+      setFertilize(true);
+      setTimeout(() => {
+        setBackground(defBackground);
+        setFertilize(false);
+      }, 5000);
+    }
   };
 
   //use usestate to allow level, seed count to change
@@ -227,7 +231,6 @@ function App() {
             {isAuthenticated && !isLoading && (
               <div className="leaderb">
                 <Popup
-                  
                   trigger={
                     <button className="leaderboard">
                       <img src={leaderboard} className="leader" />
