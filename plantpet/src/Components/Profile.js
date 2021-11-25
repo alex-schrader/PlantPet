@@ -16,7 +16,6 @@ const Profile = (props) => {
     }
     props.setLevelProf(myUser.PlantLevel);
     props.setCurrUserProf(myUser);
-    props.setSeedProf(myUser.SeedCount)
 
     if (!oldUser) {
       //push new acc to database

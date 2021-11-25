@@ -70,6 +70,7 @@ function App() {
           console.log(error);
         });
       setLevel(level + 0.25);
+      setSeed(oldSeed => oldSeed + 5)
     }
   };
 
